@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Login and Registration Page</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'login/style.css' %}">
+    </head>
+    <body>
+        <div class = "wrapper">
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            <div class = "reg">
+                <h1>Registration</h1>
+                <form action = "/register" method = "POST">
+                    {%csrf_token%}
+                    <p class = "first">First Name: <input type = "text" name = "first_name"></p>
+                    <p class = "last">Last Name: <input type = "text" name = "last_name"></p>
+                    <p class = "alias">Alias: <input type = "text" name = "alias"></p>
+                    <p class = "email">Email: <input type = "text" name = "email"></p>
+                    <p class = "pw">Password: <input type = "password" name = "password"></p>
+                    <p class = "cpw">Confirm PW: <input type = "password" name = "c_password"></p>
+                    <input class = "regbut" type = "submit" value = "Register"></p>
+                </form>
+            </div>
+            <div class = "reg">
+                <h1>Login</h1>
+                <form action = "/login" method = "POST">
+                    {%csrf_token%}
+                    <p class = "email">Email: <input type = "text" name = "email"></p>
+                    <p class = "pw">Password: <input type = "password" name = "password"></p>
+                    <input class = "regbut" type = "submit" value = "Login"></p>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
